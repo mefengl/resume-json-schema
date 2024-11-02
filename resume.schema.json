@@ -1,0 +1,215 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tech Resume Schema",
+  "type": "object",
+  "required": ["contactInfo", "workExperience", "education"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "template": {
+          "type": "object",
+          "properties": {
+            "source": {
+              "type": "string",
+              "description": "Source of the template"
+            },
+            "instructions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "notes": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "contactInfo": {
+      "type": "object",
+      "required": ["name", "location"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "city": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            }
+          }
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "linkedin": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9-./]+$"
+        },
+        "github": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9-./]+$"
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "description": "Professional summary, optional but recommended when relevant"
+    },
+    "workExperience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["title", "company", "startDate"],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "company": {
+            "type": "string"
+          },
+          "team": {
+            "type": "string"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "city": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              }
+            }
+          },
+          "startDate": {
+            "type": "string",
+            "pattern": "^\\d{4}(-\\d{2})?(-\\d{2})?$",
+            "description": "Date in YYYY, YYYY-MM, or YYYY-MM-DD format"
+          },
+          "endDate": {
+            "type": "string",
+            "pattern": "^\\d{4}(-\\d{2})?(-\\d{2})?$",
+            "description": "Date in YYYY, YYYY-MM, or YYYY-MM-DD format"
+          },
+          "current": {
+            "type": "boolean"
+          },
+          "achievements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["degree", "institution", "startYear", "endYear"],
+        "properties": {
+          "degree": {
+            "type": "string"
+          },
+          "institution": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "startYear": {
+            "type": "integer"
+          },
+          "endYear": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "technicalSkills": {
+      "type": "object",
+      "properties": {
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "technologies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "other": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "highlights": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "additionalSections": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "interests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
